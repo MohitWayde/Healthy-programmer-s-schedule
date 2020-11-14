@@ -1,7 +1,4 @@
-# For final scheduler
-# water_seconds = 3600
-# eyes_seconds = 1800
-# exercise_seconds = 2700
+# Place all files in same folder(txt file, mp3 file and this python file
 import datetime
 import time
 from pygame import mixer
@@ -22,7 +19,7 @@ def musicforsch(file, stopper_msg):
             
 try:
     def logfile(msg):
-        with open("schedulerlog.txt","a") as f1:
+        with open("schedulerlog.txt","a") as f1: #create .txt file for generating log of you exercises
             mytime = time.strftime("%H"":""%M")
             f1.write(f"{msg}{mytime} : DATE & TIME {datetime.datetime.now()} \n")
 except Exception as e:
@@ -36,20 +33,18 @@ def scheduler_app():
         init_water = time.time()
         init_eyes = time.time()
         init_exercise = time.time()
-#         print("For WATER, I will remind you after every 1 hour")
-#         print("For EYES , I will remind you after every 30 minutes")
-#         print("For BODY MOVEMENT, I will remind you after every 45 minutes")
+
         while True:
             if  time.time()-init_water > water:
-                musicforsch("Besabriyaan.mp3", "wdone")
+                musicforsch("water.mp3", "wdone") # dont forget to change filename, paste any mp3 file in the folder where this python file is located
                 logfile("Drank water at      :")
                 init_water = time.time()
             if  time.time()-init_eyes > eyes:
-                musicforsch("Ik_Vaari_Aa.mp3", "edone")
+                musicforsch("eyes.mp3", "edone") # dont forget to change filename, paste any mp3 file in the folder where this python file is located
                 logfile("Eyes exercise at    :")
                 init_eyes = time.time()
             if  time.time()-init_exercise > exercise:
-                musicforsch("Hall-of-fame.mp3", "pdone")
+                musicforsch("hpysicalact.mp3", "pdone") # dont forget to change filename, paste any mp3 file in the folder where this python file is located
                 logfile("PhMovement at       :") 
                 init_exercise = time.time()
 
